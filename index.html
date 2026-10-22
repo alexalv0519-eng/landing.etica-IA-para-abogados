@@ -1,248 +1,1051 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEX & AI LEGAL LAB | Inteligencia Artificial y Derecho</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        navy: { 900: '#0F172A', 800: '#1E293B', 700: '#334155' },
-                        gold: { 400: '#E2C044', 500: '#D4AF37', 600: '#C5A059' }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEX & AI LEGAL LAB | Inteligencia Artificial, Riesgo Jurídico y Derechos Fundamentales</title>
+  <meta name="description" content="Laboratorio de investigación y consultoría jurídica de alta gama sobre Inteligencia Artificial, Bioética Algorítmica, Responsabilidad Civil y Derechos Fundamentales.">
+
+  <!-- Tipografías: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Iconos Vectoriales FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            night: '#0B1120',
+            navy: '#0F172A',
+            slateDark: '#1E293B',
+            slateCard: 'rgba(30, 41, 59, 0.72)',
+            gold: {
+              300: '#E6CA7D',
+              400: '#D4AF37',
+              500: '#C5A059',
+              600: '#B0883C',
+              700: '#8C6B26'
+            },
+            parchment: '#F8FAFC',
+            mutedSlate: '#94A3B8'
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Playfair Display', 'serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'gold-glow': '0 0 25px -5px rgba(212, 175, 55, 0.25)',
+            'gold-strong': '0 0 35px 2px rgba(212, 175, 55, 0.35)',
+            'card-glass': '0 10px 30px -10px rgba(0, 0, 0, 0.5)'
+          }
         }
-    </script>
-    <style>
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
-        .tab-btn.active {
-            color: #D4AF37;
-            border-bottom: 2px solid #D4AF37;
-            background-color: rgba(212, 175, 55, 0.05);
-        }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0F172A;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #C5A059;
+      color: #0F172A;
+    }
+
+    .bg-mesh-pattern {
+      background-color: #0F172A;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(197, 160, 89, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(30, 58, 138, 0.2) 0px, transparent 55%),
+        radial-gradient(at 50% 50%, rgba(15, 23, 42, 1) 0px, transparent 100%),
+        radial-gradient(at 100% 100%, rgba(197, 160, 89, 0.06) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(15, 23, 42, 1) 0px, transparent 50%);
+    }
+
+    .glass-card {
+      background: rgba(30, 41, 59, 0.65);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(212, 175, 55, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6), 0 0 20px -3px rgba(212, 175, 55, 0.2);
+    }
+
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .tab-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .tab-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(1.05); }
+    }
+
+    .ambient-glow {
+      animation: subtlePulse 8s infinite ease-in-out;
+    }
+  </style>
 </head>
-<body class="bg-navy-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- NAVBAR -->
-    <header class="sticky top-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-gold-500/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center font-serif text-navy-900 font-bold text-xl shadow-lg shadow-gold-500/10">
-                    §
-                </div>
-                <span class="font-serif text-xl font-bold tracking-wider text-gold-500">LEX & AI <span class="text-slate-300 font-sans text-sm font-normal uppercase tracking-widest block sm:inline">| Legal Lab</span></span>
-            </div>
-            <a href="#contacto" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-navy-900 font-medium text-sm transition-all duration-300 shadow-sm">
-                Consultoría Especializada
-            </a>
-        </div>
-    </header>
+<body class="bg-navy text-parchment antialiased selection:bg-gold-500 selection:text-night relative">
 
-    <!-- HERO SECTION -->
-    <section class="relative py-16 lg:py-24 overflow-hidden border-b border-slate-800">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
-            <span class="inline-block px-3 py-1 rounded-full bg-gold-500/10 text-gold-400 border border-gold-500/20 text-xs font-semibold uppercase tracking-widest mb-4">
-                Marco Dogmático & Implicaciones Legales
+  <!-- Luces Ambientales de Fondo (Atmósfera Parallax) -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div id="orb-1" class="ambient-glow absolute -top-40 -left-40 w-[600px] h-[600px] bg-gold-500/10 rounded-full blur-[140px]"></div>
+    <div id="orb-2" class="ambient-glow absolute top-1/3 -right-40 w-[700px] h-[700px] bg-blue-900/20 rounded-full blur-[160px]" style="animation-delay: -3s;"></div>
+    <div id="orb-3" class="ambient-glow absolute -bottom-40 left-1/4 w-[650px] h-[650px] bg-gold-400/10 rounded-full blur-[150px]" style="animation-delay: -5s;"></div>
+  </div>
+
+  <!-- 1. BARRA DE NAVEGACIÓN SUPERIOR (STICKY) -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <a href="#" class="flex items-center space-x-3.5 group">
+          <div class="w-11 h-11 rounded-lg border border-gold-500/40 bg-slateDark/70 flex items-center justify-center text-gold-400 group-hover:border-gold-400 group-hover:shadow-gold-glow transition-all duration-300">
+            <i class="fa-solid fa-scale-balanced text-xl"></i>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif tracking-widest text-lg font-bold text-parchment group-hover:text-gold-300 transition-colors">
+              LEX <span class="text-gold-400">&amp;</span> AI
             </span>
-            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-100 leading-tight mb-6">
-                Inteligencia Artificial y Derecho: <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-gold-500 to-amber-200">Riesgo Jurídico y Derechos Fundamentales</span>
-            </h1>
-            <p class="text-slate-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
-                La IA no constituye un mero desarrollo informático, sino un mecanismo generador de riesgo jurídico, imputación de responsabilidad civil y administrativa, y potencial afectación a garantías constitucionales.
-            </p>
+            <span class="text-[10px] tracking-[0.25em] uppercase text-mutedSlate font-semibold">
+              Legal Lab &bull; Civic Tech
+            </span>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#vision" class="nav-anchor text-sm uppercase tracking-wider text-mutedSlate hover:text-gold-400 transition-colors font-medium">
+            Visión &amp; Riesgo
+          </a>
+          <a href="#ponencias" class="nav-anchor text-sm uppercase tracking-wider text-mutedSlate hover:text-gold-400 transition-colors font-medium">
+            Análisis Académico
+          </a>
+          <a href="#multimedia" class="nav-anchor text-sm uppercase tracking-wider text-mutedSlate hover:text-gold-400 transition-colors font-medium">
+            Multimedia
+          </a>
+          <a href="#contacto" class="nav-anchor text-sm uppercase tracking-wider text-mutedSlate hover:text-gold-400 transition-colors font-medium">
+            Dictamen &amp; Asesoría
+          </a>
+        </nav>
+
+        <div class="hidden lg:flex items-center space-x-4">
+          <div class="flex items-center space-x-2 text-xs text-mutedSlate border-r border-slate-700/60 pr-4">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Sala 1 &bull; Ponencias Activas</span>
+          </div>
+          <a href="#contacto" class="px-5 py-2.5 rounded text-xs font-semibold uppercase tracking-widest bg-gradient-to-r from-gold-500 to-gold-400 text-night hover:from-gold-400 hover:to-gold-300 transition-all duration-300 shadow-md hover:shadow-gold-glow flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-xs"></i>
+            <span>Consultoría Senior</span>
+          </a>
         </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="mobileMenuBtn" aria-label="Abrir menú" class="p-2 rounded text-mutedSlate hover:text-gold-400 focus:outline-none">
+            <i class="fa-solid fa-bars-staggered text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobileMenu" class="hidden md:hidden bg-slateDark/95 border-b border-gold-500/20 px-6 py-6 space-y-4">
+      <a href="#vision" class="mobile-link block text-sm font-medium text-parchment hover:text-gold-400">Visión &amp; Riesgo Jurídico</a>
+      <a href="#ponencias" class="mobile-link block text-sm font-medium text-parchment hover:text-gold-400">Análisis Académico (Sala 1)</a>
+      <a href="#multimedia" class="mobile-link block text-sm font-medium text-parchment hover:text-gold-400">Recursos Multimedia</a>
+      <a href="#contacto" class="mobile-link block text-sm font-medium text-parchment hover:text-gold-400">Solicitar Asesoría</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION CON EFECTO PARALLAX Y MÉTRICAS -->
+  <section class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden z-10 bg-mesh-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="flex justify-center mb-6">
+        <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full border border-gold-500/30 bg-slateDark/60 backdrop-blur-md">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+          <span class="text-xs uppercase tracking-[0.2em] font-semibold text-gold-300">
+            Civic Tech &amp; Derecho Algorítmico
+          </span>
+        </div>
+      </div>
+
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-parchment leading-tight md:leading-[1.15]">
+          Inteligencia Artificial <br class="hidden sm:inline" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600">
+            &amp; Frontera Jurídica
+          </span>
+        </h1>
+
+        <div class="w-24 h-0.5 mx-auto my-6 bg-gradient-to-r from-transparent via-gold-400 to-transparent"></div>
+
+        <p class="text-base sm:text-lg md:text-xl text-mutedSlate font-light leading-relaxed max-w-3xl mx-auto">
+          Plataforma de alta dogmática para magistrados, juristas y firmas corporativas. Análisis riguroso sobre imputación de responsabilidad, gobierno de datos, bioética algorítmica y tutela efectiva de los derechos fundamentales.
+        </p>
+
+        <!-- Barra de Credenciales y Métricas -->
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-slate-800/80">
+          <div class="p-3 text-center">
+            <span class="block font-serif text-2xl md:text-3xl font-bold text-gold-400">100%</span>
+            <span class="text-xs uppercase tracking-wider text-mutedSlate">Explicabilidad Algorítmica</span>
+          </div>
+          <div class="p-3 text-center">
+            <span class="block font-serif text-2xl md:text-3xl font-bold text-gold-400">Due Process</span>
+            <span class="text-xs uppercase tracking-wider text-mutedSlate">By Design &amp; Default</span>
+          </div>
+          <div class="p-3 text-center">
+            <span class="block font-serif text-2xl md:text-3xl font-bold text-gold-400">Habeas Data</span>
+            <span class="text-xs uppercase tracking-wider text-mutedSlate">Protección Ultra-Sensible</span>
+          </div>
+          <div class="p-3 text-center">
+            <span class="block font-serif text-2xl md:text-3xl font-bold text-gold-400">Zero Trust</span>
+            <span class="text-xs uppercase tracking-wider text-mutedSlate">Frente a Alucinaciones</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SISTEMA DE TABS DINÁMICAS (PILL SWITCHER) -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    
+    <!-- Barra de Selección de Pestañas Flotante -->
+    <div class="sticky top-20 z-40 py-4 -mx-4 px-4 sm:mx-0 sm:px-0 backdrop-blur-xl bg-navy/85 border-b border-slate-800/80 mb-12">
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 p-1.5 bg-slateDark/80 rounded-xl border border-slate-700/60 shadow-xl max-w-3xl mx-auto">
+        <button onclick="switchTab('tab-vision')" id="btn-tab-vision" class="tab-trigger flex-1 sm:flex-initial flex items-center justify-center space-x-2.5 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 bg-gold-500 text-night shadow-gold-glow">
+          <i class="fa-solid fa-gavel text-sm"></i>
+          <span>Visión &amp; Riesgo Jurídico</span>
+        </button>
+        <button onclick="switchTab('tab-academic')" id="btn-tab-academic" class="tab-trigger flex-1 sm:flex-initial flex items-center justify-center space-x-2.5 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 text-mutedSlate hover:text-parchment hover:bg-slate-700/50">
+          <i class="fa-solid fa-graduation-cap text-sm"></i>
+          <span>Análisis Académico (Sala 1)</span>
+        </button>
+        <button onclick="switchTab('tab-media')" id="btn-tab-media" class="tab-trigger flex-1 sm:flex-initial flex items-center justify-center space-x-2.5 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all duration-300 text-mutedSlate hover:text-parchment hover:bg-slate-700/50">
+          <i class="fa-solid fa-photo-film text-sm"></i>
+          <span>Recursos Multimedia</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- PESTAÑA 1: VISIÓN & RIESGO JURÍDICO -->
+    <section id="tab-vision" class="tab-content active space-y-12">
+      <div class="relative rounded-2xl glass-card p-8 md:p-12 overflow-hidden border border-gold-500/25">
+        <div class="relative z-10 max-w-4xl">
+          <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-gold-400 mb-4">
+            <span class="w-8 h-[1px] bg-gold-400"></span>
+            <span>Premisa Dogmática de Vanguardia</span>
+          </div>
+
+          <h2 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-parchment leading-snug">
+            Inteligencia Artificial y Derecho: <br>
+            <span class="text-gold-300">Riesgo Jurídico, Responsabilidad</span> y Derechos Fundamentales
+          </h2>
+
+          <p class="mt-6 text-base sm:text-lg text-slate-300 font-normal leading-relaxed border-l-2 border-gold-500/60 pl-6 bg-slateDark/30 py-3 rounded-r-lg">
+            La Inteligencia Artificial y los sistemas automatizados <strong class="text-parchment">no son meros desarrollos informáticos neutros</strong>, sino mecanismos directos generadores de <span class="text-gold-300 font-semibold">riesgo jurídico calificado</span>, imputación objetiva de responsabilidad y potencial afectación lesiva a los derechos más esenciales del orden constitucional: <em>la dignidad intrínseca de la persona, el debido proceso sustantivo, el derecho de contradicción, el habeas data reforzado y la prohibición absoluta de discriminación algorítmica</em>.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4 text-xs font-medium text-mutedSlate">
+            <span class="px-3 py-1.5 rounded-md bg-slateDark border border-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-check text-gold-400"></i> No Delegabilidad Jurisdiccional
+            </span>
+            <span class="px-3 py-1.5 rounded-md bg-slateDark border border-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-check text-gold-400"></i> Auditoría Causal de Redes Neuronales
+            </span>
+            <span class="px-3 py-1.5 rounded-md bg-slateDark border border-slate-700 flex items-center gap-1.5">
+              <i class="fa-solid fa-check text-gold-400"></i> Inversión Probatoria de la Caja Negra
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjetas de Implicaciones Legales (Grid de 3 Columnas) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Tarjeta 1 -->
+        <div class="glass-card rounded-xl p-7 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-lg bg-slateDark border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6 group-hover:scale-110 group-hover:border-gold-400 transition-all duration-300">
+              <i class="fa-solid fa-code-compare text-2xl"></i>
+            </div>
+            <div class="text-xs uppercase font-bold tracking-widest text-gold-400/80 mb-2">Eje Dogmático I</div>
+            <h3 class="font-serif text-xl font-bold text-parchment group-hover:text-gold-300 transition-colors mb-4">
+              Ética, Trazabilidad &amp; Transparencia
+            </h3>
+            <p class="text-sm text-mutedSlate leading-relaxed mb-6">
+              Superación del paradigma de la "caja negra". El derecho contemporáneo exige la auditabilidad retrospectiva completa de todo modelo predictivo utilizado en el tráfico jurídico.
+            </p>
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Explicabilidad algorítmica:</strong> Reconstrucción comprensible de las variables determinantes para defensa letrada.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Gobierno de datos &amp; linaje:</strong> Verificación de fuentes limpias y mitigación de sesgos históricos aprendidos.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Consentimiento informado revocable:</strong> Transparencia estricta sobre el uso de agentes de IA.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Cadena de responsabilidad:</strong> Imputabilidad solidaria entre desarrollador, integrador y operador final.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-gold-400 font-semibold">
+            <span>Principio de Explicabilidad</span>
+            <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1.5 transition-transform"></i>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2 -->
+        <div class="glass-card rounded-xl p-7 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-lg bg-slateDark border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6 group-hover:scale-110 group-hover:border-gold-400 transition-all duration-300">
+              <i class="fa-solid fa-user-shield text-2xl"></i>
+            </div>
+            <div class="text-xs uppercase font-bold tracking-widest text-gold-400/80 mb-2">Eje Dogmático II</div>
+            <h3 class="font-serif text-xl font-bold text-parchment group-hover:text-gold-300 transition-colors mb-4">
+              Dignidad Humanizadora vs. Reduccionismo
+            </h3>
+            <p class="text-sm text-mutedSlate leading-relaxed mb-6">
+              El sujeto de derecho no puede ser reducido a un vector matemático ni a una puntuación actuarial de riesgo en sede de libertades fundamentales.
+            </p>
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Prohibición del perfilamiento tasado:</strong> Nulidad de decisiones que clausuren la individualidad biofísica.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Reserva exclusiva del juzgamiento:</strong> La potestad jurisdiccional pertenece exclusivamente a seres humanos.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Inmunidad ante tipificación probabilística:</strong> El estándar sancionatorio exige certeza probatoria.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Contradicción en audiencia:</strong> Derecho irrenunciable a ser escuchado por un juez natural.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-gold-400 font-semibold">
+            <span>Reserva Jurisdiccional Humana</span>
+            <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1.5 transition-transform"></i>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3 -->
+        <div class="glass-card rounded-xl p-7 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-lg bg-slateDark border border-gold-500/30 flex items-center justify-center text-gold-400 mb-6 group-hover:scale-110 group-hover:border-gold-400 transition-all duration-300">
+              <i class="fa-solid fa-hand-holding-heart text-2xl"></i>
+            </div>
+            <div class="text-xs uppercase font-bold tracking-widest text-gold-400/80 mb-2">Eje Dogmático III</div>
+            <h3 class="font-serif text-xl font-bold text-parchment group-hover:text-gold-300 transition-colors mb-4">
+              Cuidado, Relacionalidad &amp; Tutela
+            </h3>
+            <p class="text-sm text-mutedSlate leading-relaxed mb-6">
+              La justicia no es un cálculo de optimización estocástica. La relación procesal se funda en la proximidad ética y el deber de protección calificada.
+            </p>
+            <ul class="space-y-3 text-xs text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Deber jurídico de custodia:</strong> Vigilancia ininterrumpida frente a derivas autónomas (model drift).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Protección a grupos vulnerables:</strong> Auditoría proactiva sobre sesgos interseccionales y brecha digital.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Inversión de la carga probatoria:</strong> Quien implemente el modelo automatizado debe probar su inocuidad.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-angle-right text-gold-400 mt-0.5"></i>
+                <span><strong>Garantía de contacto humano:</strong> Derecho vinculante a un interlocutor humano competente en cada instancia.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-gold-400 font-semibold">
+            <span>Doctrina de Proximidad Humana</span>
+            <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1.5 transition-transform"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Declaración Dogmática con Imagen Institucional -->
+      <div class="relative rounded-xl overflow-hidden border border-slate-800 glass-card p-6 md:p-8 flex flex-col md:flex-row items-center gap-8">
+        <div class="w-full md:w-1/3 h-52 md:h-64 rounded-lg overflow-hidden relative shadow-lg">
+          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80" alt="Balanza de justicia clásica" class="w-full h-full object-cover grayscale opacity-90 hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/30 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 text-[11px] font-mono tracking-wider uppercase bg-slateDark/90 px-2.5 py-1 rounded text-gold-400 border border-gold-500/30">
+            Jurisdictio Humana
+          </span>
+        </div>
+        <div class="w-full md:w-2/3 space-y-4">
+          <div class="text-gold-400 text-3xl font-serif">“</div>
+          <blockquote class="font-serif italic text-lg sm:text-xl text-parchment leading-relaxed -mt-4">
+            Ninguna fórmula estadística, por sofisticada que sea su arquitectura convolucional, ostenta legitimidad moral o constitucional para sustituir la conciencia valorativa del juzgador ni para confiscar la palabra viva del justiciable ante sus jueces.
+          </blockquote>
+          <div class="pt-2">
+            <span class="block text-sm font-bold text-gold-300 uppercase tracking-wider">Comité Consultivo de Bioética &amp; Derecho Digital</span>
+            <span class="text-xs text-mutedSlate">Lex &amp; AI Legal Lab &bull; Documento de Posicionamiento Dogmático</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- TABS DE NAVEGACIÓN PRINCIPAL -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
-        <div class="flex border-b border-slate-800 mb-8 overflow-x-auto scrollbar-none" id="tabHeader">
-            <button onclick="switchTab('tab1')" id="btn-tab1" class="tab-btn active px-6 py-4 font-serif font-medium text-slate-300 hover:text-gold-400 whitespace-nowrap transition-all duration-200">
-                1. Visión & Riesgo Jurídico
-            </button>
-            <button onclick="switchTab('tab2')" id="btn-tab2" class="tab-btn px-6 py-4 font-serif font-medium text-slate-300 hover:text-gold-400 whitespace-nowrap transition-all duration-200">
-                2. Análisis Académico (Ponencias)
-            </button>
-            <button onclick="switchTab('tab3')" id="btn-tab3" class="tab-btn px-6 py-4 font-serif font-medium text-slate-300 hover:text-gold-400 whitespace-nowrap transition-all duration-200">
-                3. Recursos Multimedia
-            </button>
+    <!-- PESTAÑA 2: ANÁLISIS ACADÉMICO (PONENCIAS SALA 1) -->
+    <section id="tab-academic" class="tab-content space-y-10">
+      <div class="border-b border-slate-800 pb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-gold-400 mb-2">
+            <i class="fa-solid fa-microscope text-xs"></i>
+            <span>Simposio de Derecho, Tecnología &amp; Responsabilidad</span>
+          </div>
+          <h2 class="font-serif text-2xl sm:text-4xl font-bold text-parchment">
+            Análisis Académico <span class="text-gold-300 font-normal">&bull; Ponencias Sala 1</span>
+          </h2>
+          <p class="text-sm text-mutedSlate mt-1 max-w-2xl">
+            Sistematización dogmático-jurídica, lectura crítica y estándares de compliance de las ponencias magistrales presentadas en la Sala 1.
+          </p>
         </div>
+        <span class="px-3 py-1.5 rounded-full bg-slateDark border border-gold-500/30 text-xs font-mono text-gold-300">
+          4 Ponencias Evaluadas
+        </span>
+      </div>
 
-        <!-- CONTENIDO PESTAÑA 1 -->
-        <div id="tab1" class="tab-content space-y-8">
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-xl border hover:border-gold-500/40 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-gold-500/10 flex items-center justify-center text-gold-500 mb-4 text-2xl font-serif">⚖️</div>
-                    <h3 class="font-serif text-xl font-bold text-gold-400 mb-3">Ética, Trazabilidad y Transparencia</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Explicabilidad algorítmica, gobierno de datos estricto, consentimiento informado revocable y delimitación clara de la cadena de responsabilidad entre desarrolladores, implementadores y usuarios.
-                    </p>
-                </div>
-                <div class="glass-card p-6 rounded-xl border hover:border-gold-500/40 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-gold-500/10 flex items-center justify-center text-gold-500 mb-4 text-2xl font-serif">🏛️</div>
-                    <h3 class="font-serif text-xl font-bold text-gold-400 mb-3">Dignidad Humanizadora</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Prohibición del perfilamiento tasado. Ninguna persona puede sufrir efectos jurídicos adversos basados únicamente en el procesamiento automatizado. Reserva de la función jurisdiccional al ser humano.
-                    </p>
-                </div>
-                <div class="glass-card p-6 rounded-xl border hover:border-gold-500/40 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-lg bg-gold-500/10 flex items-center justify-center text-gold-500 mb-4 text-2xl font-serif">🛡️</div>
-                    <h3 class="font-serif text-xl font-bold text-gold-400 mb-3">Cuidado y Relacionalidad</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed">
-                        Deber de custodia e inversión de la carga probatoria para proteger sectores vulnerables. Garantía del contacto humano en la administración de justicia y atención en salud.
-                    </p>
-                </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Ponencia 1 -->
+        <article class="glass-card rounded-xl p-8 flex flex-col justify-between border-t-2 border-t-gold-500 relative overflow-hidden group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded text-[11px] font-mono uppercase tracking-wider bg-gold-500/10 text-gold-300 border border-gold-500/20">
+                Ponencia 01 &bull; Bioética
+              </span>
+              <span class="text-xs text-mutedSlate flex items-center gap-1.5">
+                <i class="fa-regular fa-clock text-gold-500"></i> Sala 1 &bull; Sesión Plenaria
+              </span>
             </div>
-        </div>
-
-        <!-- CONTENIDO PESTAÑA 2 -->
-        <div id="tab2" class="tab-content hidden space-y-6">
-            <div class="grid lg:grid-cols-2 gap-6">
-                <!-- Ponencia 1 -->
-                <div class="glass-card p-6 rounded-xl border border-slate-800">
-                    <span class="text-xs font-semibold text-gold-500 tracking-wider uppercase">Ponencia 01</span>
-                    <h4 class="font-serif text-lg font-bold text-slate-100 mt-1 mb-2">IA, Bioética Algorítmica y Dignidad en Educación Superior</h4>
-                    <p class="text-xs text-slate-400 mb-4">Dr. Juan Israel Ávila, Dra. Elena Donaji, Dra. Lorena Ávila</p>
-                    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-                        <li><strong>Analítica de riesgos:</strong> Responsabilidad por sesgos o alucinaciones en IA.</li>
-                        <li><strong>Debido proceso algorítmico:</strong> Canales institucionales de impugnación y reparación.</li>
-                        <li><strong>Sujeción a la dignidad:</strong> La personalidad jurídica no es parametrizable.</li>
-                    </ul>
-                </div>
-                <!-- Ponencia 2 -->
-                <div class="glass-card p-6 rounded-xl border border-slate-800">
-                    <span class="text-xs font-semibold text-gold-500 tracking-wider uppercase">Ponencia 02</span>
-                    <h4 class="font-serif text-lg font-bold text-slate-100 mt-1 mb-2">IA Generativa, Pensamiento Crítico y Responsabilidad</h4>
-                    <p class="text-xs text-slate-400 mb-4">Lic. Rosa Vanessa Delgado Uyoque</p>
-                    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-                        <li><strong>Valoración probatoria:</strong> Razonamiento crítico e intuición como facultades insustituibles.</li>
-                        <li><strong>Filtro de alucinaciones:</strong> Prevención de incorporación de citas falsas al proceso.</li>
-                        <li><strong>Compliance:</strong> Reglamentos para prevenir fraude o infracciones de autor.</li>
-                    </ul>
-                </div>
-                <!-- Ponencia 3 -->
-                <div class="glass-card p-6 rounded-xl border border-slate-800">
-                    <span class="text-xs font-semibold text-gold-500 tracking-wider uppercase">Ponencia 03</span>
-                    <h4 class="font-serif text-lg font-bold text-slate-100 mt-1 mb-2">Ética y Trazabilidad en Remuneraciones</h4>
-                    <p class="text-xs text-slate-400 mb-4">Fernando Andrés Gómez Cano</p>
-                    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-                        <li><strong>Protección del salario:</strong> Reducción de errores contables y litigios laborales.</li>
-                        <li><strong>Prueba digital:</strong> Bitácora e inalterabilidad como cadena de custodia.</li>
-                        <li><strong>Imputabilidad:</strong> La responsabilidad jurídica recae en la persona que valida la transacción.</li>
-                    </ul>
-                </div>
-                <!-- Ponencia 4 -->
-                <div class="glass-card p-6 rounded-xl border border-slate-800">
-                    <span class="text-xs font-semibold text-gold-500 tracking-wider uppercase">Ponencia 04</span>
-                    <h4 class="font-serif text-lg font-bold text-slate-100 mt-1 mb-2">Dilemas Éticos en IA y Salud Mental</h4>
-                    <p class="text-xs text-slate-400 mb-4">Lic. Luciana Blanco</p>
-                    <ul class="text-sm text-slate-300 space-y-2 list-disc list-inside">
-                        <li><strong>Riesgo de intrusismo:</strong> La "ilusión de empatía" y responsabilidad por mala praxis.</li>
-                        <li><strong>Habeas Data:</strong> Protección de datos ultrasensibles ante filtraciones o sesgos.</li>
-                        <li><strong>Deber estatal:</strong> La automatización no puede sustituir la atención médica presencial.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- CONTENIDO PESTAÑA 3 -->
-        <div id="tab3" class="tab-content hidden space-y-8">
-            <div class="glass-card p-6 rounded-2xl border border-slate-800 max-w-4xl mx-auto">
-                <h3 class="font-serif text-xl font-bold text-gold-400 mb-4 text-center">Conferencia Destacada: Sesión del Congreso</h3>
-                <div class="relative w-full aspect-video rounded-xl overflow-hidden border border-slate-700 shadow-2xl">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/7axO7SA7Iys" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="mt-8 text-center">
-                    <a href="https://www.youtube.com/results?search_query=inteligencia+artificial+etica+dignidad+humana+responsabilidad+social" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 text-navy-900 font-semibold text-sm hover:brightness-110 transition-all shadow-lg shadow-gold-500/20">
-                        <span>Explorar más ponencias sobre IA y Dignidad Humana</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- FORMULARIO DE CONTACTO -->
-        <section id="contacto" class="mt-20 glass-card p-8 sm:p-12 rounded-2xl border border-gold-500/20 max-w-3xl mx-auto relative overflow-hidden">
-            <div class="text-center mb-8">
-                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-100 mb-2">Solicite Consultoría Jurídica Especializada</h2>
-                <p class="text-slate-400 text-sm">Analizamos el impacto, riesgos y cumplimiento normativo de la Inteligencia Artificial en su firma u organización.</p>
-            </div>
-            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Solicitud registrada correctamente.');">
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Nombre Completo</label>
-                        <input type="text" required class="w-full bg-navy-900/80 border border-slate-700 rounded px-4 py-2.5 text-slate-100 text-sm focus:border-gold-500 focus:outline-none transition-colors" placeholder="Dr. Alexander Álvarez">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Correo Profesional</label>
-                        <input type="email" required class="w-full bg-navy-900/80 border border-slate-700 rounded px-4 py-2.5 text-slate-100 text-sm focus:border-gold-500 focus:outline-none transition-colors" placeholder="contacto@bufete.com">
-                    </div>
-                </div>
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Teléfono / WhatsApp</label>
-                        <input type="tel" class="w-full bg-navy-900/80 border border-slate-700 rounded px-4 py-2.5 text-slate-100 text-sm focus:border-gold-500 focus:outline-none transition-colors" placeholder="+57 300 000 0000">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Área de Ejercicio</label>
-                        <select class="w-full bg-navy-900/80 border border-slate-700 rounded px-4 py-2.5 text-slate-100 text-sm focus:border-gold-500 focus:outline-none transition-colors">
-                            <option>Derecho Corporativo & TIC</option>
-                            <option>Litigio & Derecho Procesal</option>
-                            <option>Derecho Laboral & Remuneraciones</option>
-                            <option>Magistratura / Sector Público</option>
-                            <option>Otro</option>
-                        </select>
-                    </div>
-                </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-parchment group-hover:text-gold-300 transition-colors">
+              Habitar la universidad con IA y Bioética Algorítmica
+            </h3>
+            <p class="text-xs text-gold-400/90 font-medium uppercase tracking-wide mt-1 mb-4">
+              Dr. Juan Israel Ávila et al.
+            </p>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Límites éticos de la mediación computacional en la educación superior, producción científica y configuración de la voluntad académica.
+            </p>
+            <div class="space-y-3.5 bg-slateDark/70 p-4 rounded-lg border border-slate-700/50">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">1</div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Consulta Específica</label>
-                    <textarea rows="3" class="w-full bg-navy-900/80 border border-slate-700 rounded px-4 py-2.5 text-slate-100 text-sm focus:border-gold-500 focus:outline-none transition-colors" placeholder="Describa brevemente su requerimiento..."></textarea>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Analítica de riesgos y responsabilidad por sesgos o alucinaciones:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Deber de diligencia debida del investigador al incorporar salidas algorítmicas con potencial de falsedad.</p>
                 </div>
-                <button type="submit" class="w-full py-3 rounded bg-gradient-to-r from-gold-500 to-gold-600 text-navy-900 font-bold text-sm uppercase tracking-wider hover:brightness-110 transition-all shadow-lg shadow-gold-500/10">
-                    Enviar Solicitud
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">2</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Bioética e institucionalidad regulatoria:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Implementación de <em>Due Process by Design</em> y canales sumarios de impugnación contra evaluaciones arbitrarias.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">3</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Sujeción categórica a la dignidad humana:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">La personalidad jurídica y los méritos intelectivos jamás pueden reducirse a una métrica parametrizable.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs">
+            <span class="text-mutedSlate font-mono">Tesis: Inalienabilidad de la Subjetividad</span>
+            <span class="text-gold-400 font-semibold group-hover:underline">Leer Síntesis &rarr;</span>
+          </div>
+        </article>
+
+        <!-- Ponencia 2 -->
+        <article class="glass-card rounded-xl p-8 flex flex-col justify-between border-t-2 border-t-gold-500 relative overflow-hidden group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded text-[11px] font-mono uppercase tracking-wider bg-gold-500/10 text-gold-300 border border-gold-500/20">
+                Ponencia 02 &bull; Derecho Probatorio
+              </span>
+              <span class="text-xs text-mutedSlate flex items-center gap-1.5">
+                <i class="fa-regular fa-clock text-gold-500"></i> Sala 1 &bull; Sesión Especial
+              </span>
+            </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-parchment group-hover:text-gold-300 transition-colors">
+              IA Generativa y Universidad Ética
+            </h3>
+            <p class="text-xs text-gold-400/90 font-medium uppercase tracking-wide mt-1 mb-4">
+              Lic. Rosa Vanessa Delgado Uyoque
+            </p>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Examen dogmático de la lealtad procesal y la autenticidad probatoria en contextos de producción intelectual asistida masivamente por LLMs.
+            </p>
+            <div class="space-y-3.5 bg-slateDark/70 p-4 rounded-lg border border-slate-700/50">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">1</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Competencias insustituibles en sana crítica:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">El razonamiento inductivo-deductivo de valoración probatoria es indelegable en sistemas sin conciencia semántica.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">2</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Proceso autorregulado y validez probatoria:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Protocolos de verificación obligatoria contra la infiltración de citas ficticias y alucinaciones factuales.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">3</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Compliance normativo e infracción de IP:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Riesgo corporativo por uso de obras preexistentes protegidas por derechos de autor en el entrenamiento de modelos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs">
+            <span class="text-mutedSlate font-mono">Tesis: Lealtad Procesal Estricta</span>
+            <span class="text-gold-400 font-semibold group-hover:underline">Leer Síntesis &rarr;</span>
+          </div>
+        </article>
+
+        <!-- Ponencia 3 -->
+        <article class="glass-card rounded-xl p-8 flex flex-col justify-between border-t-2 border-t-gold-500 relative overflow-hidden group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded text-[11px] font-mono uppercase tracking-wider bg-gold-500/10 text-gold-300 border border-gold-500/20">
+                Ponencia 03 &bull; Laboral &amp; Tributario
+              </span>
+              <span class="text-xs text-mutedSlate flex items-center gap-1.5">
+                <i class="fa-regular fa-clock text-gold-500"></i> Sala 1 &bull; Panel Corporativo
+              </span>
+            </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-parchment group-hover:text-gold-300 transition-colors">
+              Ética y Trazabilidad en Remuneraciones
+            </h3>
+            <p class="text-xs text-gold-400/90 font-medium uppercase tracking-wide mt-1 mb-4">
+              Fernando Andrés Gómez Cano
+            </p>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Automatización de nóminas complejas y compensaciones variables: de la presunción de exactitud a la contingencia litigiosa patrimonial.
+            </p>
+            <div class="space-y-3.5 bg-slateDark/70 p-4 rounded-lg border border-slate-700/50">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">1</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Prevención del litigio y protección salarial:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Sustitución del cálculo discrecional y salvaguarda del salario como derecho de orden público económico.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">2</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Trazabilidad como prueba digital plena:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Garantía inalterable de cadena de custodia, no repudio e integridad documental del log transaccional.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">3</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Imputabilidad humana en la validación fiscal:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">El algoritmo ejecuta pero los apoderados y auditores responden solidariamente ante las autoridades fiscales.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs">
+            <span class="text-mutedSlate font-mono">Tesis: Integridad de Evidencia Digital</span>
+            <span class="text-gold-400 font-semibold group-hover:underline">Leer Síntesis &rarr;</span>
+          </div>
+        </article>
+
+        <!-- Ponencia 4 -->
+        <article class="glass-card rounded-xl p-8 flex flex-col justify-between border-t-2 border-t-gold-500 relative overflow-hidden group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded text-[11px] font-mono uppercase tracking-wider bg-gold-500/10 text-gold-300 border border-gold-500/20">
+                Ponencia 04 &bull; Responsabilidad Civil Médica
+              </span>
+              <span class="text-xs text-mutedSlate flex items-center gap-1.5">
+                <i class="fa-regular fa-clock text-gold-500"></i> Sala 1 &bull; Bioética Clínica
+              </span>
+            </div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-parchment group-hover:text-gold-300 transition-colors">
+              Dilemas Éticos en IA y Salud Mental
+            </h3>
+            <p class="text-xs text-gold-400/90 font-medium uppercase tracking-wide mt-1 mb-4">
+              Lic. Luciana Blanco
+            </p>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Impacto lesivo de chatbots conversacionales que simulan apego emocional terapéutico sin respaldo facultativo ni acreditación clínica.
+            </p>
+            <div class="space-y-3.5 bg-slateDark/70 p-4 rounded-lg border border-slate-700/50">
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">1</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">"Ilusión de empatía" e intrusismo ilícito:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Riesgo de mala praxis y tipificación por ejercicio ilegal al ofrecer consejos clínicos no certificados.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">2</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Protección de datos ultra-sensibles:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Vulnerabilidad de patologías psiquiátricas reveladas a plataformas privadas sin consentimiento calificado.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">3</div>
+                <div>
+                  <h4 class="text-xs font-bold text-parchment uppercase tracking-wide">Falla algorítmica y deber de tutela estatal:</h4>
+                  <p class="text-xs text-mutedSlate mt-0.5">Responsabilidad objetiva por inducción a conductas lesivas y la obligación estatal de tutela preventiva urgente.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs">
+            <span class="text-mutedSlate font-mono">Tesis: Tutela Reforzada de la Psique</span>
+            <span class="text-gold-400 font-semibold group-hover:underline">Leer Síntesis &rarr;</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PESTAÑA 3: RECURSOS MULTIMEDIA -->
+    <section id="tab-media" class="tab-content space-y-12">
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-gold-400">
+          <i class="fa-solid fa-play-circle text-xs"></i>
+          <span>Audiovisual &amp; Acervo Académico</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-parchment">
+          Recursos Multimedia Especializados
+        </h2>
+        <p class="text-sm text-mutedSlate">
+          Transmisiones plenarias, cátedras magistrales y debates jurídicos en alta definición sobre el impacto de la tecnología en la dignidad y el debido proceso.
+        </p>
+      </div>
+
+      <!-- Reproductor Integrado -->
+      <div class="max-w-5xl mx-auto rounded-2xl glass-card p-4 sm:p-6 lg:p-8 border border-gold-500/30 shadow-2xl relative">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 mb-4 border-b border-slate-700/60 text-xs">
+          <div class="flex items-center space-x-3">
+            <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+            <span class="font-semibold uppercase tracking-wider text-parchment">Sesión de Análisis: Conferencia Magistral</span>
+          </div>
+          <div class="text-mutedSlate font-mono flex items-center gap-3">
+            <span><i class="fa-solid fa-shield text-gold-400"></i> Video Acreditado</span>
+            <span class="hidden sm:inline">&bull;</span>
+            <span class="hidden sm:inline">Identificador: 7axO7SA7Iys</span>
+          </div>
+        </div>
+
+        <div class="relative w-full rounded-xl overflow-hidden bg-black shadow-2xl aspect-video border border-slate-800">
+          <iframe 
+            class="absolute top-0 left-0 w-full h-full"
+            src="https://www.youtube.com/embed/7axO7SA7Iys?rel=0&modestbranding=1" 
+            title="Conferencia Magistral - Inteligencia Artificial, Ética y Derecho" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-4 border-t border-slate-700/60">
+          <div>
+            <h4 class="font-serif font-bold text-lg text-parchment">
+              Debate Crítico: Ética, Inteligencia Artificial y Responsabilidad Jurídica
+            </h4>
+            <p class="text-xs text-mutedSlate mt-1">
+              Ponencias seleccionadas de juristas y científicos de datos analizando la jurisprudencia de cortes internacionales.
+            </p>
+          </div>
+          <div class="flex items-center space-x-2 text-xs text-gold-400">
+            <i class="fa-solid fa-certificate"></i>
+            <span>Material para descarga y citación académica</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de Acción Externa -->
+      <div class="text-center py-6">
+        <a 
+          href="https://www.youtube.com/results?search_query=inteligencia+artificial+etica+dignidad+humana+responsabilidad+social" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center space-x-3 px-8 py-4 rounded-xl font-serif text-sm font-bold uppercase tracking-widest bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-night hover:shadow-gold-strong hover:scale-[1.02] transition-all duration-300 shadow-xl border border-gold-300 group"
+        >
+          <i class="fa-brands fa-youtube text-lg text-night group-hover:scale-125 transition-transform"></i>
+          <span>Explorar más contenidos sobre IA, Ética y Dignidad Humana</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs text-night/80 ml-1"></i>
+        </a>
+        <p class="text-xs text-mutedSlate mt-3">
+          Se abrirá el repositorio de investigaciones audiovisuales en una nueva pestaña
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. FORMULARIO DE CAPTACIÓN DE DATOS (LEAD GENERATION) -->
+    <section id="contacto" class="mt-28 relative scroll-mt-24">
+      <div class="relative glass-card rounded-2xl p-8 sm:p-12 lg:p-16 border border-gold-500/30 max-w-5xl mx-auto shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-gold-400">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Atención Confidencial</span>
+            </div>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-parchment leading-tight">
+              Solicitud de Dictamen &amp; Asesoría Especializada
+            </h3>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              Dirigido a magistrados, directores de litigio, firmas de abogados y directores de cumplimiento. Nuestros consultores senior emiten dictámenes periciales y dogmáticos en derecho algorítmico con rigor de sala superior.
+            </p>
+            <div class="space-y-4 pt-4 border-t border-slate-700/60 text-xs text-mutedSlate">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-lock text-gold-400 text-sm"></i>
+                <span>Secreto profesional y estricto acuerdo de confidencialidad (NDA).</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-file-signature text-gold-400 text-sm"></i>
+                <span>Dictámenes técnicos con validez pericial ante tribunales.</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-stopwatch text-gold-400 text-sm"></i>
+                <span>Respuesta prioritaria en menos de 24 horas hábiles.</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-slateDark/80 border border-slate-700/80 flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-full border border-gold-400 flex items-center justify-center text-gold-400 shrink-0">
+                <i class="fa-solid fa-stamp text-lg"></i>
+              </div>
+              <div>
+                <span class="block text-xs font-serif font-bold text-parchment uppercase tracking-wider">Unidad Pericial Acreditada</span>
+                <span class="text-[11px] text-mutedSlate">Lex &amp; AI Legal Lab &bull; Registro Internacional</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+              
+              <div>
+                <label for="fullName" class="block text-xs uppercase font-semibold tracking-wider text-parchment mb-2">
+                  Nombre Completo <span class="text-gold-400">*</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-mutedSlate">
+                    <i class="fa-regular fa-user"></i>
+                  </div>
+                  <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    required 
+                    placeholder="Ej. Dr. Santiago Valenzuela de la Rosa" 
+                    class="w-full pl-10 pr-4 py-3 bg-slateDark/90 border border-slate-700 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 rounded-lg text-sm text-parchment placeholder-slate-500 transition-all outline-none"
+                  >
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="workEmail" class="block text-xs uppercase font-semibold tracking-wider text-parchment mb-2">
+                    Correo Profesional <span class="text-gold-400">*</span>
+                  </label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-mutedSlate">
+                      <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <input 
+                      type="email" 
+                      id="workEmail" 
+                      name="workEmail" 
+                      required 
+                      placeholder="jurista@firma-legal.com" 
+                      class="w-full pl-10 pr-4 py-3 bg-slateDark/90 border border-slate-700 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 rounded-lg text-sm text-parchment placeholder-slate-500 transition-all outline-none"
+                    >
+                  </div>
+                </div>
+
+                <div>
+                  <label for="phone" class="block text-xs uppercase font-semibold tracking-wider text-parchment mb-2">
+                    Teléfono / WhatsApp <span class="text-gold-400">*</span>
+                  </label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-mutedSlate">
+                      <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <input 
+                      type="tel" 
+                      id="phone" 
+                      name="phone" 
+                      required 
+                      placeholder="+34 612 345 678" 
+                      class="w-full pl-10 pr-4 py-3 bg-slateDark/90 border border-slate-700 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 rounded-lg text-sm text-parchment placeholder-slate-500 transition-all outline-none"
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="legalArea" class="block text-xs uppercase font-semibold tracking-wider text-parchment mb-2">
+                  Área de Ejercicio Jurídico <span class="text-gold-400">*</span>
+                </label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-mutedSlate">
+                    <i class="fa-solid fa-balance-scale"></i>
+                  </div>
+                  <select 
+                    id="legalArea" 
+                    name="legalArea" 
+                    required 
+                    class="w-full pl-10 pr-10 py-3 bg-slateDark/90 border border-slate-700 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 rounded-lg text-sm text-parchment transition-all outline-none appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled selected class="text-slate-500">Seleccione su especialidad principal</option>
+                    <option value="civil" class="bg-slateDark text-parchment">Derecho Civil y Responsabilidad Extracontractual</option>
+                    <option value="laboral" class="bg-slateDark text-parchment">Derecho Laboral y Trazabilidad Remunerativa</option>
+                    <option value="penal" class="bg-slateDark text-parchment">Derecho Penal y Ciberdelincuencia Algorítmica</option>
+                    <option value="corporativo" class="bg-slateDark text-parchment">Derecho Corporativo &amp; Compliance Tecnológico</option>
+                    <option value="tic_ia" class="bg-slateDark text-parchment">Derecho TIC, Inteligencia Artificial &amp; Privacidad</option>
+                    <option value="magistratura" class="bg-slateDark text-parchment">Magistratura, Judicatura &amp; Función Jurisdiccional</option>
+                    <option value="otro" class="bg-slateDark text-parchment">Consultoría Académica u Otro Sector</option>
+                  </select>
+                  <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-mutedSlate">
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="inquiry" class="block text-xs uppercase font-semibold tracking-wider text-parchment mb-2">
+                  Detalle de la Consulta o Caso Jurídico <span class="text-gold-400">*</span>
+                </label>
+                <textarea 
+                  id="inquiry" 
+                  name="inquiry" 
+                  rows="4" 
+                  required 
+                  placeholder="Describa brevemente la situación litigiosa, riesgo algorítmico, auditoría requerida o materia del dictamen..." 
+                  class="w-full p-3.5 bg-slateDark/90 border border-slate-700 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 rounded-lg text-sm text-parchment placeholder-slate-500 transition-all outline-none resize-none"
+                ></textarea>
+              </div>
+
+              <div class="flex items-start gap-2.5 pt-1">
+                <input 
+                  type="checkbox" 
+                  id="consent" 
+                  required 
+                  class="mt-1 w-4 h-4 rounded border-slate-700 text-gold-500 focus:ring-gold-400 bg-slateDark cursor-pointer"
+                >
+                <label for="consent" class="text-xs text-mutedSlate leading-snug cursor-pointer">
+                  Autorizo el tratamiento de mis datos de contacto conforme a los estándares de Habeas Data y confidencialidad letrada.
+                </label>
+              </div>
+
+              <div class="pt-2">
+                <button 
+                  type="submit" 
+                  id="submitBtn"
+                  class="w-full py-4 rounded-xl font-serif text-sm font-bold uppercase tracking-widest bg-gradient-to-r from-gold-500 via-gold-400 to-gold-500 text-night hover:from-gold-400 hover:to-gold-300 transition-all duration-300 shadow-lg hover:shadow-gold-strong flex items-center justify-center space-x-3 group"
+                >
+                  <i class="fa-solid fa-feather-pointed text-base text-night group-hover:rotate-12 transition-transform"></i>
+                  <span>Solicitar Asesoría Especializada</span>
+                  <i class="fa-solid fa-arrow-right text-xs text-night ml-1 group-hover:translate-x-1 transition-transform"></i>
                 </button>
+              </div>
             </form>
-        </section>
-    </main>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-800 bg-navy-900 py-8 text-center text-slate-500 text-xs">
-        <p>© 2026 LEX & AI LEGAL LAB. Todos los derechos reservados. Ética, Dignidad y Responsabilidad Algorítmica.</p>
-    </footer>
+            <div id="formSuccessMessage" class="hidden mt-6 p-6 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-center space-y-3">
+              <div class="w-12 h-12 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl">
+                <i class="fa-solid fa-check-double"></i>
+              </div>
+              <h4 class="font-serif text-lg font-bold text-emerald-200">Recepción de Caso Confirmada</h4>
+              <p class="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
+                Su solicitud ha sido cifrada y asignada al magistrado consultor en turno de <strong>Lex &amp; AI Legal Lab</strong>.
+              </p>
+            </div>
+          </div>
 
-    <!-- SCRIPT DE INTERACTIVIDAD PARA TABS -->
-    <script>
-        function switchTab(tabId) {
-            // Ocultar todos los contenidos
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            // Remover estado activo de los botones
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            
-            // Mostrar la pestaña seleccionada
-            document.getElementById(tabId).classList.remove('hidden');
-            // Activar botón seleccionado
-            document.getElementById('btn-' + tabId).classList.add('active');
-        }
-    </script>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER INSTITUCIONAL -->
+  <footer class="bg-night border-t border-slate-800/80 pt-16 pb-12 relative z-10 text-xs text-mutedSlate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        <div class="space-y-4 md:col-span-1">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded border border-gold-500/40 bg-slateDark flex items-center justify-center text-gold-400">
+              <i class="fa-solid fa-scale-balanced text-sm"></i>
+            </div>
+            <span class="font-serif font-bold text-parchment tracking-wider">LEX &amp; AI LAB</span>
+          </div>
+          <p class="text-xs leading-relaxed">
+            Consorcio de alta investigación en Civic Tech, Bioética Algorítmica y Tutela Judicial de Derechos Fundamentales.
+          </p>
+        </div>
+        <div class="space-y-3">
+          <h5 class="font-serif font-bold text-parchment uppercase tracking-wider text-xs">Áreas Dogmáticas</h5>
+          <ul class="space-y-2">
+            <li><a href="#vision" class="hover:text-gold-400 transition-colors">Explicabilidad Algorítmica</a></li>
+            <li><a href="#vision" class="hover:text-gold-400 transition-colors">Debido Proceso by Design</a></li>
+            <li><a href="#vision" class="hover:text-gold-400 transition-colors">Habeas Data Reforzado</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h5 class="font-serif font-bold text-parchment uppercase tracking-wider text-xs">Cátedras Sala 1</h5>
+          <ul class="space-y-2">
+            <li><a href="#ponencias" onclick="switchTab('tab-academic')" class="hover:text-gold-400 transition-colors">Bioética Algorítmica</a></li>
+            <li><a href="#ponencias" onclick="switchTab('tab-academic')" class="hover:text-gold-400 transition-colors">IA Generativa y Universidad</a></li>
+            <li><a href="#ponencias" onclick="switchTab('tab-academic')" class="hover:text-gold-400 transition-colors">Remuneraciones y Nómina</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h5 class="font-serif font-bold text-parchment uppercase tracking-wider text-xs">Aviso Deontológico</h5>
+          <p class="text-[11px] leading-relaxed text-slate-400">
+            Finalidad científica y de asesoría. Dictámenes emitidos por juristas colegiados bajo estricto secreto profesional.
+          </p>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+        <div>&copy; 2026 LEX &amp; AI LEGAL LAB. Todos los derechos reservados.</div>
+        <div class="flex items-center space-x-6">
+          <a href="#" class="hover:text-gold-400 transition-colors">Privacidad</a>
+          <a href="#" class="hover:text-gold-400 transition-colors">Bioética</a>
+          <a href="#" class="hover:text-gold-400 transition-colors">Términos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT: TABS, PARALLAX Y FORMULARIO -->
+  <script>
+    function switchTab(targetTabId) {
+      const allContents = document.querySelectorAll('.tab-content');
+      allContents.forEach(content => content.classList.remove('active'));
+
+      const allTriggers = document.querySelectorAll('.tab-trigger');
+      allTriggers.forEach(btn => {
+        btn.classList.remove('bg-gold-500', 'text-night', 'shadow-gold-glow');
+        btn.classList.add('text-mutedSlate');
+      });
+
+      const targetContent = document.getElementById(targetTabId);
+      if (targetContent) targetContent.classList.add('active');
+
+      const targetBtn = document.getElementById('btn-' + targetTabId);
+      if (targetBtn) {
+        targetBtn.classList.remove('text-mutedSlate');
+        targetBtn.classList.add('bg-gold-500', 'text-night', 'shadow-gold-glow');
+      }
+
+      const tabsContainer = document.querySelector('main');
+      if (tabsContainer && window.scrollY > tabsContainer.offsetTop) {
+        window.scrollTo({
+          top: tabsContainer.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    }
+
+    document.querySelectorAll('.nav-anchor').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#vision') { e.preventDefault(); switchTab('tab-vision'); }
+        else if (href === '#ponencias') { e.preventDefault(); switchTab('tab-academic'); }
+        else if (href === '#multimedia') { e.preventDefault(); switchTab('tab-media'); }
+      });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX / window.innerWidth - 0.5;
+      const mouseY = e.clientY / window.innerHeight - 0.5;
+      const orb1 = document.getElementById('orb-1');
+      const orb2 = document.getElementById('orb-2');
+      const orb3 = document.getElementById('orb-3');
+      if (orb1) orb1.style.transform = `translate(${mouseX * 35}px, ${mouseY * 35}px)`;
+      if (orb2) orb2.style.transform = `translate(${mouseX * -45}px, ${mouseY * -45}px)`;
+      if (orb3) orb3.style.transform = `translate(${mouseX * 25}px, ${mouseY * 25}px)`;
+    });
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById('leadForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const successMessage = document.getElementById('formSuccessMessage');
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <i class="fa-solid fa-circle-notch fa-spin text-base text-night"></i>
+        <span>Procesando y Cifrando Consulta...</span>
+      `;
+
+      setTimeout(() => {
+        submitBtn.classList.add('hidden');
+        form.reset();
+        successMessage.classList.remove('hidden');
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 1200);
+    }
+  </script>
 </body>
 </html>
