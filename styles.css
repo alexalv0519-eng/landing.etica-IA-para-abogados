@@ -4,29 +4,33 @@
    ========================================================================== */
 
 :root {
-  --color-primary: #0F172A;
-  --color-secondary: #1E293B;
-  --color-accent: #C5A059;
-  --color-accent-hover: #D4AF37;
-  --color-accent-light: #FBF7EE;
+  /* Paleta Principal */
+  --color-primary: #0F172A;       /* Azul Noche / Pizarra Oscuro */
+  --color-secondary: #1E293B;     /* Antracita */
+  --color-accent: #C5A059;        /* Dorado Tenue Institucional */
+  --color-accent-hover: #D4AF37;  /* Dorado Brillante */
+  --color-accent-light: #FBF7EE;  /* Fondo dorado muy suave */
   
-  --bg-light: #F8FAFC;
-  --bg-white: #FFFFFF;
-  --border-color: #E2E8F0;
+  --bg-light: #F8FAFC;            /* Fondo general claro */
+  --bg-white: #FFFFFF;            /* Tarjetas y superficies */
+  --border-color: #E2E8F0;        /* Bordes sutiles */
   
-  --text-dark: #0F172A;
-  --text-body: #475569;
-  --text-muted: #64748B;
+  --text-dark: #0F172A;           /* Títulos oscuros nítidos */
+  --text-body: #475569;           /* Texto de lectura */
+  --text-muted: #64748B;          /* Texto secundario */
 
+  /* Tipografía */
   --font-main: 'Montserrat', sans-serif;
   --font-serif: 'Playfair Display', serif;
 
+  /* Sombras y Efectos Fox */
   --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
   --shadow-md: 0 6px 20px -2px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 16px 32px -4px rgba(15, 23, 42, 0.12);
   --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Base */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -52,6 +56,7 @@ body {
   color: #FFFFFF;
 }
 
+/* Header tipo Fox */
 .fox-header {
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
@@ -61,6 +66,7 @@ body {
   transition: var(--transition);
 }
 
+/* Botones con estilo Fox */
 .btn-fox-primary {
   background-color: var(--color-primary);
   color: #FFFFFF;
@@ -133,6 +139,7 @@ body {
   transform: translateY(-2px);
 }
 
+/* Tarjetas tipo Fox (con fotos destacadas, bordes limpios y sombras elegantes) */
 .fox-card {
   background: var(--bg-white);
   border-radius: 1.25rem;
@@ -148,6 +155,7 @@ body {
   border-color: rgba(197, 160, 89, 0.4);
 }
 
+/* Pestañas tipo Switcher de Fox */
 .fox-tab-bar {
   background: #FFFFFF;
   padding: 6px;
@@ -188,6 +196,7 @@ body {
   color: var(--color-accent);
 }
 
+/* Contenido de Pestañas */
 .tab-content {
   display: none;
   opacity: 0;
@@ -201,6 +210,7 @@ body {
   transform: translateY(0);
 }
 
+/* Formulario Moderno */
 .fox-input {
   width: 100%;
   padding: 14px 18px;
@@ -223,6 +233,7 @@ body {
   color: #94A3B8;
 }
 
+/* Floating WhatsApp Button (como en Fox Inmobiliario) */
 .floating-whatsapp {
   position: fixed;
   bottom: 28px;
@@ -248,6 +259,7 @@ body {
   color: #FFFFFF;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .fox-tab-bar {
     border-radius: 1.25rem;
